@@ -277,14 +277,27 @@
       nav { display: none; }
       .burger { display: flex; }
       #mobile-menu {
-        display: none; flex-direction: column; align-items: center; justify-content: center;
+        display: none; flex-direction: column;
         position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-        background-color: #0F2232; padding: 32px 24px; gap: 32px; z-index: 200;
+        background-color: #0F2232; z-index: 200; overflow: hidden;
       }
       #mobile-menu.open { display: flex; }
-      #mobile-menu a { font-family: var(--display); font-size: 26px; font-weight: 700; letter-spacing: 0.04em; color: #fff; text-transform: uppercase; }
-      #mobile-menu a:hover { color: var(--celeste); }
-      #mobile-menu .nav-phone { font-size: 18px; margin-top: 12px; color: var(--celeste) !important; }
+      .mm-header {
+        display: flex; align-items: center; justify-content: space-between;
+        padding: 0 24px; height: 70px; border-bottom: 1px solid rgba(255,255,255,0.08); flex-shrink: 0;
+      }
+      .mm-logo { display: flex; align-items: center; gap: 10px; }
+      .mm-logo img { height: 40px; width: 40px; object-fit: contain; border-radius: 6px; }
+      .mm-logo span { font-family: var(--display); font-size: 19px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 0.04em; }
+      .mm-logo span em { color: var(--celeste); font-style: normal; }
+      .mm-close { background: none; border: none; cursor: pointer; padding: 8px; display: flex; align-items: center; justify-content: center; min-width: 44px; min-height: 44px; }
+      .mm-close svg { width: 22px; height: 22px; stroke: #fff; }
+      .mm-links { flex: 1; display: flex; flex-direction: column; justify-content: center; padding: 0 32px; }
+      .mm-links a { font-family: var(--display); font-size: 28px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 0.04em; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.08); transition: color 0.2s; }
+      .mm-links a:last-child { border-bottom: none; }
+      .mm-links a:hover { color: var(--celeste); }
+      .mm-footer { padding: 24px; flex-shrink: 0; }
+      .mm-footer a { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--celeste); color: #fff; font-family: var(--display); font-size: 18px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; padding: 16px; border-radius: 8px; }
       .footer-top { grid-template-columns: 1fr; gap: 36px; }
       .footer-bottom { flex-direction: column; text-align: center; }
       .wa-btn span { display: none; }
@@ -317,11 +330,24 @@
 </header>
 
 <div id="mobile-menu">
-  <a href="index.html">Inicio</a>
-  <a href="servicios.html">Servicios</a>
-  <a href="nosotros.html">Nosotros</a>
-  <a href="contacto.html">Contacto</a>
-  <a href="tel:3415954223" class="nav-phone">📞 341-595-4223</a>
+  <div class="mm-header">
+    <div class="mm-logo">
+      <img src="assets/logo.avif" alt="Logo Fletes E&M">
+      <span>Fletes <em>E&M</em></span>
+    </div>
+    <button class="mm-close" id="mm-close" aria-label="Cerrar menú">
+      <svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="mm-links">
+    <a href="index.html">Inicio</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="nosotros.html">Nosotros</a>
+    <a href="contacto.html">Contacto</a>
+  </div>
+  <div class="mm-footer">
+    <a href="tel:3415954223">📞 341-595-4223</a>
+  </div>
 </div>
 
 <!-- HERO — SCROLL-VIDEO-SECTION -->
@@ -642,14 +668,11 @@
 <script>
   const burger = document.getElementById('burger');
   const mobileMenu = document.getElementById('mobile-menu');
-  burger.addEventListener('click', () => {
-    mobileMenu.classList.toggle('open');
-    burger.style.zIndex = mobileMenu.classList.contains('open') ? '201' : '';
-  });
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-    mobileMenu.classList.remove('open');
-    burger.style.zIndex = '';
-  }));
+  const mmClose = document.getElementById('mm-close');
+  const closeMobileMenu = () => mobileMenu.classList.remove('open');
+  burger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mmClose.addEventListener('click', closeMobileMenu);
+  mobileMenu.querySelectorAll('.mm-links a, .mm-footer a').forEach(a => a.addEventListener('click', closeMobileMenu));
 
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
