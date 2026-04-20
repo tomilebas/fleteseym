@@ -276,11 +276,12 @@
       .section { padding: 64px 20px; }
       nav { display: none; }
       nav.open {
-        display: flex; flex-direction: column;
-        position: fixed; inset: 70px 0 0 0;
-        background: var(--dark); padding: 32px 24px; gap: 20px; z-index: 99;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        position: fixed; inset: 0 0 0 0;
+        background: var(--darker); padding: 32px 24px; gap: 32px; z-index: 99;
       }
-      nav.open a { font-size: 22px; }
+      nav.open a { font-size: 26px; font-weight: 700; letter-spacing: 0.04em; }
+      nav.open .nav-phone { font-size: 18px; margin-top: 12px; }
       .burger { display: flex; }
       .footer-top { grid-template-columns: 1fr; gap: 36px; }
       .footer-bottom { flex-direction: column; text-align: center; }
@@ -616,7 +617,7 @@
     </div>
     <hr class="ft-divider">
     <div class="footer-bottom">
-      <p class="footer-copy">© 2025 Fletes E&M – Rosario, Santa Fe. Todos los derechos reservados.</p>
+      <p class="footer-copy">© 2026 Fletes E&M – Rosario, Santa Fe. Todos los derechos reservados.</p>
       <p class="footer-copy">Mudanzas – Repartos – Elevaciones – Fletes</p>
     </div>
   </div>
@@ -631,7 +632,14 @@
 <script>
   const burger = document.getElementById('burger');
   const nav = document.getElementById('nav');
-  burger.addEventListener('click', () => nav.classList.toggle('open'));
+  burger.addEventListener('click', () => {
+    nav.classList.toggle('open');
+    burger.style.zIndex = nav.classList.contains('open') ? '100' : '';
+  });
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    nav.classList.remove('open');
+    burger.style.zIndex = '';
+  }));
 
   const obs = new IntersectionObserver(entries => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('on'); });
