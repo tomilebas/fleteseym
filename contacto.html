@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto | Fletes E&M – Rosario, Santa Fe</title>
+  <meta name="description" content="Contactá a Fletes E&M en Rosario. Teléfono: 341-595-4223. WhatsApp: +54 341 595 4223. Email: fleteseymrosario@gmail.com. Pedí tu presupuesto ahora.">
+  <link rel="icon" href="assets/logo.avif" type="image/avif">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --celeste: #4EB7F5; --celeste-dark: #2B8FCC; --navy: #2B5672; --dark: #1C3A50; --darker: #0F2232;
+      --text: #303030; --text-light: #6B7280;
+      --bg: #FFFFFF; --bg-alt: #F0F7FD; --border: #D1E8F7;
+      --display: 'Barlow Condensed', sans-serif; --body: 'Outfit', sans-serif;
+      --max: 1160px; --r: 12px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--body); color: var(--text); background: var(--bg); overflow-x: hidden; line-height: 1.6; }
+    a { text-decoration: none; color: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .header { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(28,58,80,0.96); backdrop-filter: blur(16px); border-bottom: 2px solid var(--celeste); }
+    .header-inner { max-width: var(--max); margin: 0 auto; padding: 0 24px; display: flex; align-items: center; justify-content: space-between; height: 70px; }
+    .header-logo { display: flex; align-items: center; gap: 12px; }
+    .header-logo img { height: 48px; width: 48px; object-fit: contain; border-radius: 8px; }
+    .logo-name { font-family: var(--display); font-size: 21px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: 0.04em; }
+    .logo-name em { color: var(--celeste); font-style: normal; }
+    nav { display: flex; align-items: center; gap: 28px; }
+    nav a { font-family: var(--display); font-size: 14px; font-weight: 600; color: rgba(255,255,255,0.8); text-transform: uppercase; letter-spacing: 0.08em; transition: color 0.2s; }
+    nav a:hover, nav a.active { color: var(--celeste); }
+    .nav-phone { color: var(--celeste) !important; }
+    .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .burger span { display: block; width: 24px; height: 2px; background: #fff; }
+
+    .page-hero { padding: 140px 24px 72px; background: var(--dark); text-align: center; }
+    .page-hero-tag { display: inline-block; background: var(--celeste); color: var(--dark); font-family: var(--display); font-size: 12px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase; padding: 5px 18px; border-radius: 100px; margin-bottom: 20px; }
+    .page-hero-title { font-family: var(--display); font-size: clamp(52px, 8vw, 88px); font-weight: 900; color: #fff; text-transform: uppercase; line-height: 0.92; margin-bottom: 18px; }
+    .page-hero-title em { color: var(--celeste); font-style: normal; }
+    .page-hero-sub { font-size: 18px; color: rgba(255,255,255,0.7); max-width: 520px; margin: 0 auto; line-height: 1.65; }
+
+    .section { padding: 88px 24px; }
+    .section-alt { background: var(--bg-alt); }
+    .wrap { max-width: var(--max); margin: 0 auto; }
+
+    /* CONTACT MAIN */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 64px; align-items: start; }
+
+    /* INFO COLUMN */
+    .contact-info { display: flex; flex-direction: column; gap: 24px; }
+    .info-tag { display: inline-block; font-family: var(--display); font-size: 12px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--navy); margin-bottom: 4px; }
+    .info-title { font-family: var(--display); font-size: clamp(36px, 4vw, 52px); font-weight: 900; text-transform: uppercase; color: var(--dark); line-height: 0.95; margin-bottom: 20px; }
+    .info-cards { display: flex; flex-direction: column; gap: 16px; }
+    .info-card { display: flex; align-items: flex-start; gap: 16px; background: var(--bg-alt); border-radius: var(--r); padding: 22px 20px; border: 1px solid var(--border); transition: all 0.22s ease; text-decoration: none; }
+    .info-card:hover { border-color: var(--celeste); box-shadow: 0 4px 20px rgba(0,0,0,0.08); transform: translateX(4px); }
+    .info-card-icon { font-size: 28px; flex-shrink: 0; }
+    .info-card-body {}
+    .info-card-label { font-family: var(--display); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--text-light); margin-bottom: 4px; }
+    .info-card-value { font-family: var(--display); font-size: 20px; font-weight: 800; color: var(--dark); }
+
+    /* WA HIGHLIGHT */
+    .wa-highlight {
+      display: flex; align-items: center; gap: 16px;
+      background: #25D366; border-radius: var(--r); padding: 24px 24px;
+      transition: all 0.22s ease; text-decoration: none;
+    }
+    .wa-highlight:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(37,211,102,0.4); }
+    .wa-highlight-icon { font-size: 36px; flex-shrink: 0; }
+    .wa-highlight-text {}
+    .wa-highlight-label { font-family: var(--display); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: rgba(255,255,255,0.8); margin-bottom: 4px; }
+    .wa-highlight-value { font-family: var(--display); font-size: 22px; font-weight: 900; color: #fff; text-transform: uppercase; }
+
+    .social-row { display: flex; gap: 12px; }
+    .social-card { display: flex; align-items: center; gap: 10px; background: var(--dark); border-radius: 8px; padding: 12px 18px; color: rgba(255,255,255,0.8); font-family: var(--display); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; transition: all 0.22s; }
+    .social-card:hover { background: var(--celeste); color: var(--dark); }
+    .social-card svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
+
+    /* FORM */
+    .contact-form-wrap { background: var(--bg-alt); border-radius: var(--r); padding: 48px 40px; border: 1px solid var(--border); }
+    .form-title { font-family: var(--display); font-size: 32px; font-weight: 900; text-transform: uppercase; color: var(--dark); margin-bottom: 8px; }
+    .form-sub { font-size: 15px; color: var(--text-light); margin-bottom: 32px; line-height: 1.6; }
+    .form-group { margin-bottom: 20px; }
+    .form-group label { display: block; font-family: var(--display); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--dark); margin-bottom: 8px; }
+    .form-group input, .form-group textarea, .form-group select {
+      width: 100%; padding: 14px 16px; border: 1.5px solid var(--border); border-radius: 8px;
+      font-family: var(--body); font-size: 15px; color: var(--text); background: var(--bg);
+      transition: border-color 0.2s, box-shadow 0.2s; outline: none;
+      appearance: none; -webkit-appearance: none;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--celeste); box-shadow: 0 0 0 3px rgba(78,183,245,0.15); }
+    .form-group textarea { resize: vertical; min-height: 120px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .btn-submit { width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--celeste); color: #fff; font-family: var(--display); font-size: 17px; font-weight: 900; text-transform: uppercase; letter-spacing: 0.06em; padding: 17px 32px; border-radius: 8px; border: none; cursor: pointer; transition: all 0.22s ease; margin-top: 8px; }
+    .btn-submit:hover { background: var(--celeste-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(78,183,245,0.4); }
+    .form-note { font-size: 13px; color: var(--text-light); text-align: center; margin-top: 14px; line-height: 1.6; }
+
+    /* SUCCESS */
+    .form-success { display: none; text-align: center; padding: 40px 20px; }
+    .form-success.show { display: block; }
+    .form-success h3 { font-family: var(--display); font-size: 32px; font-weight: 900; text-transform: uppercase; color: var(--dark); margin-bottom: 12px; }
+    .form-success p { font-size: 16px; color: var(--text-light); }
+
+    footer { background: var(--darker); padding: 64px 24px 28px; }
+    .footer-inner { max-width: var(--max); margin: 0 auto; }
+    .footer-top { display: grid; grid-template-columns: 1.6fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .ft-logo { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .ft-logo img { height: 44px; width: 44px; object-fit: contain; border-radius: 6px; }
+    .ft-logo-text { font-family: var(--display); font-size: 19px; font-weight: 800; color: #fff; text-transform: uppercase; }
+    .ft-logo-text em { color: var(--celeste); font-style: normal; }
+    .ft-tag { font-size: 14px; color: rgba(255,255,255,0.4); line-height: 1.65; max-width: 270px; margin-bottom: 20px; }
+    .ft-social { display: flex; gap: 10px; }
+    .ft-social a { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; background: rgba(255,255,255,0.07); border-radius: 8px; color: rgba(255,255,255,0.55); transition: all 0.2s; }
+    .ft-social a:hover { background: var(--celeste); color: var(--dark); }
+    .ft-col h4 { font-family: var(--display); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.16em; color: var(--celeste); margin-bottom: 18px; }
+    .ft-col ul { list-style: none; }
+    .ft-col ul li { margin-bottom: 10px; }
+    .ft-col ul li a { font-size: 14px; color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .ft-col ul li a:hover { color: #fff; }
+    .ft-contact-row { display: flex; gap: 10px; margin-bottom: 12px; font-size: 14px; color: rgba(255,255,255,0.5); }
+    .ft-contact-row a { color: rgba(255,255,255,0.5); transition: color 0.2s; }
+    .ft-contact-row a:hover { color: var(--celeste); }
+    .ft-divider { border: none; border-top: 1px solid rgba(255,255,255,0.07); margin-bottom: 24px; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,0.25); }
+
+    .wa-btn { position: fixed; bottom: 26px; right: 26px; z-index: 200; display: flex; align-items: center; gap: 10px; background: #25D366; color: #fff; font-family: var(--display); font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; padding: 13px 22px; border-radius: 100px; box-shadow: 0 4px 20px rgba(37,211,102,0.45); transition: all 0.22s ease; }
+    .wa-btn:hover { transform: translateY(-3px); }
+    .wa-btn svg { width: 21px; height: 21px; fill: #fff; flex-shrink: 0; }
+
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      .footer-top { grid-template-columns: 1fr; gap: 36px; }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 64px 20px; }
+      nav { display: none; }
+      nav.open { display: flex; flex-direction: column; position: fixed; inset: 70px 0 0 0; background: var(--dark); padding: 32px 24px; gap: 20px; z-index: 99; }
+      nav.open a { font-size: 22px; }
+      .burger { display: flex; }
+      .contact-form-wrap { padding: 32px 24px; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .wa-btn span { display: none; }
+      .wa-btn { padding: 15px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a href="index.html" class="header-logo">
+      <img src="assets/logo.avif" alt="Logo Fletes E&M">
+      <span class="logo-name">Fletes <em>E&M</em></span>
+    </a>
+    <nav id="nav">
+      <a href="index.html">Inicio</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="nosotros.html">Nosotros</a>
+      <a href="contacto.html" class="active">Contacto</a>
+      <a href="tel:3415954223" class="nav-phone">📞 341-595-4223</a>
+    </nav>
+    <button class="burger" id="burger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="page-hero-tag">Hablemos</div>
+  <h1 class="page-hero-title">Contacto<br><em>directo</em></h1>
+  <p class="page-hero-sub">Respondemos al instante por WhatsApp. También podés escribirnos y te contactamos nosotros.</p>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="contact-grid">
+
+      <!-- INFO -->
+      <div class="contact-info">
+        <div>
+          <span class="info-tag">Cómo encontrarnos</span>
+          <h2 class="info-title">Hablá<br>con nosotros</h2>
+        </div>
+
+        <a href="https://wa.me/543415954223?text=Hola!%20Necesito%20un%20presupuesto%20para..." target="_blank" rel="noreferrer" class="wa-highlight">
+          <div class="wa-highlight-icon">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </div>
+          <div class="wa-highlight-text">
+            <div class="wa-highlight-label">WhatsApp — Respuesta inmediata</div>
+            <div class="wa-highlight-value">+54 341 595 4223</div>
+          </div>
+        </a>
+
+        <div class="info-cards">
+          <a href="tel:3415954223" class="info-card">
+            <div class="info-card-icon">📞</div>
+            <div class="info-card-body">
+              <div class="info-card-label">Teléfono</div>
+              <div class="info-card-value">341-595-4223</div>
+            </div>
+          </a>
+          <a href="mailto:fleteseymrosario@gmail.com" class="info-card">
+            <div class="info-card-icon">✉️</div>
+            <div class="info-card-body">
+              <div class="info-card-label">Email</div>
+              <div class="info-card-value">fleteseymrosario@gmail.com</div>
+            </div>
+          </a>
+          <div class="info-card" style="cursor:default">
+            <div class="info-card-icon">📍</div>
+            <div class="info-card-body">
+              <div class="info-card-label">Zona de cobertura</div>
+              <div class="info-card-value">Rosario, Santa Fe y región</div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <p style="font-family:var(--display);font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.16em;color:var(--text-light);margin-bottom:12px">Seguinos</p>
+          <div class="social-row">
+            <a href="https://instagram.com/fletes_eym" target="_blank" rel="noreferrer" class="social-card">
+              <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              Instagram
+            </a>
+            <a href="http://www.facebook.com/rosariofleteseym" target="_blank" rel="noreferrer" class="social-card">
+              <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              Facebook
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- FORM -->
+      <div class="contact-form-wrap">
+        <h2 class="form-title">Dejanos<br>tus datos</h2>
+        <p class="form-sub">Completá el formulario y te contactamos a la brevedad. O si preferís, escribinos directo por WhatsApp.</p>
+
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nombre">Nombre *</label>
+              <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono *</label>
+              <input type="tel" id="telefono" name="telefono" placeholder="Tu teléfono" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com">
+          </div>
+          <div class="form-group">
+            <label for="servicio">¿Qué necesitás?</label>
+            <select id="servicio" name="servicio">
+              <option value="">Seleccioná un servicio...</option>
+              <option value="mudanza">Mudanza</option>
+              <option value="reparto">Reparto para empresa</option>
+              <option value="flete">Flete / Traslado simple</option>
+              <option value="elevacion">Elevación con sogas</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="mensaje">Contanos más</label>
+            <textarea id="mensaje" name="mensaje" placeholder="¿Preferís que te contactemos? Dejanos tus datos y te escribimos por WhatsApp."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Enviar por WhatsApp
+          </button>
+          <p class="form-note">Al enviar, te redirigimos a WhatsApp con tu mensaje pre-cargado para una respuesta inmediata.</p>
+        </form>
+
+        <div class="form-success" id="formSuccess">
+          <h3>¡Mensaje enviado!</h3>
+          <p>Te redirigimos a WhatsApp para una respuesta inmediata.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="ft-logo">
+          <img src="assets/logo.avif" alt="Logo Fletes E&M">
+          <span class="ft-logo-text">Fletes <em>E&M</em></span>
+        </a>
+        <p class="ft-tag">Mudanzas – Repartos – Elevaciones – Fletes. Rosario, Santa Fe.</p>
+        <div class="ft-social">
+          <a href="https://instagram.com/fletes_eym" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="http://www.facebook.com/rosariofleteseym" target="_blank" rel="noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="17" height="17"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="ft-col">
+        <h4>Servicios</h4>
+        <ul>
+          <li><a href="servicios.html">Mudanzas</a></li>
+          <li><a href="servicios.html">Repartos a empresas</a></li>
+          <li><a href="servicios.html">Fletes y traslados</a></li>
+          <li><a href="servicios.html">Elevaciones con sogas</a></li>
+        </ul>
+      </div>
+      <div class="ft-col">
+        <h4>Contacto</h4>
+        <div class="ft-contact-row">📞 <a href="tel:3415954223">341-595-4223</a></div>
+        <div class="ft-contact-row">✉️ <a href="mailto:fleteseymrosario@gmail.com">fleteseymrosario@gmail.com</a></div>
+        <div class="ft-contact-row">📍 Rosario, Santa Fe</div>
+        <div class="ft-contact-row"><a href="https://wa.me/543415954223" target="_blank" rel="noreferrer" style="color:#25D366">💬 WhatsApp directo</a></div>
+      </div>
+    </div>
+    <hr class="ft-divider">
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 Fletes E&M – Rosario, Santa Fe. Todos los derechos reservados.</p>
+      <p class="footer-copy">Mudanzas – Repartos – Elevaciones – Fletes</p>
+    </div>
+  </div>
+</footer>
+
+<a href="https://wa.me/543415954223?text=Hola!%20Necesito%20un%20presupuesto%20para..." target="_blank" rel="noreferrer" class="wa-btn" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  <span>Pedir presupuesto</span>
+</a>
+
+<script>
+  const burger = document.getElementById('burger');
+  const nav = document.getElementById('nav');
+  burger.addEventListener('click', () => nav.classList.toggle('open'));
+
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const nombre = document.getElementById('nombre').value;
+    const telefono = document.getElementById('telefono').value;
+    const servicio = document.getElementById('servicio').value;
+    const mensaje = document.getElementById('mensaje').value;
+    const text = `Hola! Soy ${nombre}. Tel: ${telefono}. ${servicio ? 'Servicio: ' + servicio + '.' : ''} ${mensaje ? mensaje : ''}`;
+    const url = 'https://wa.me/543415954223?text=' + encodeURIComponent(text);
+    window.open(url, '_blank');
+  });
+</script>
+</body>
+</html>
